@@ -1,0 +1,67 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:form="sap.ui.layout.form">
+   <Dialog
+      id="NewEntryDialog"
+      title="Neuer Eintrag"
+      contentWidth="50%"
+      contentHeight="500px">
+
+<!-- SimpleForm für eine bessere Struktur -->
+
+      <!-- SimpleForm für eine bessere Struktur -->
+      <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
+         
+         <!-- Leerzeile durch Title (ohne Text) -->
+         <Label text=""/>
+
+         <!-- Eingabefeld Name TODO: vlt verbinden mit Einsicht -->
+         <Label text="Name" />
+         <Input
+            value="{/recipient/name}"
+            width="50%"
+            class="sapUiSmallMarginBottom"
+            valueHelpRequest=".onSearch"/>
+         
+         <!-- Eingabefeld Tätigkeiten mit Multiple Input-->
+         <Label text="Tätigkeit"/>
+         <MultiInput 
+            id="taskInput" showSuggestion="false" width="400px"  
+            showValueHelp="true"
+            valueHelpIconSrc="sap-icon://decline"
+            valueHelpRequest=".onTaskDelete"
+            submit=".onTaskAdd"><!-- Hier wird tokenUpdate genutzt -->
+            <tokens>
+               <Token text="Kaffee"/>
+               <Token text="Boden putzen"/>
+            </tokens>
+            </MultiInput>
+
+         <!-- Datum mit DatePicker-->
+         <Label text="Datum"/>
+         <DatePicker
+					id="DP1"
+					change="handleChange"
+               displayFormat="MMM dd, yyyy"
+               width="50%"
+					class="sapUiSmallMarginBottom"/>
+         
+      
+</form:SimpleForm>
+
+      <beginButton>
+         <Button
+            text="{i18n>dialogCreateButtonText}"
+            type="Emphasized"
+            press=".onCreateDialog"/>
+      </beginButton>
+
+      <endButton>
+         <Button
+            text="{i18n>dialogCloseButtonText}"
+            press=".onCloseDialog"/>
+      </endButton>
+    </Dialog>
+</core:FragmentDefinition>
+

@@ -1,0 +1,46 @@
+<mvc:View
+   controllerName="ui5.kitchen-clean-plan.controller.OverviewPanel"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+
+   <Panel class="sapUiResponsiveMargin" width="auto">
+      <!-- Toolbar für Panel-Header (Titel + Eingabefeld + Buttons) -->
+      <headerToolbar>
+         <Toolbar>
+            <!-- Panel-Titel (links) -->
+            <Title text="{i18n>overviewPanelTitle}" level="H2"/>
+
+            <!-- Leerer FlexBox für Abstand -->
+            <ToolbarSpacer/>
+
+            <!-- Eingabefeld -->
+            <Input
+               value="{/recipient/name}"
+               valueLiveUpdate="true"
+               width="40%"
+               placeholder="Filter"
+               showValueHelp="true"
+               valueHelpIconSrc="sap-icon://search"
+               valueHelpRequest=".onSearch"/>
+
+            <!-- Buttons -->
+            <Button
+               id="newEntryButton"
+               text="{i18n>newEntryDialogButtonText}"
+               type="Emphasized"
+               press=".onOpenDialog"
+               class="sapUiSmallMarginEnd sapUiPositive"/> <!-- Hier wird die SAPUI5 Positive Klasse hinzugefügt -->
+            <Button
+               id="deleteButton"
+               text="{i18n>deleteButtonText}"
+               press=".onNewEntry"/>
+         </Toolbar>
+      </headerToolbar>
+   
+      <content>
+         <FormattedText
+            htmlText="{/recipient/name}"
+            class="sapUiSmallMargin sapThemeHighlight-asColor myFilterText"/>
+      </content>
+   </Panel>
+</mvc:View>
