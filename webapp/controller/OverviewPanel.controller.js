@@ -1,6 +1,12 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/m/MessageToast", "sap/m/Token"],
-  (Controller, MessageToast, Token) => {
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/m/Token",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+  ],
+  (Controller, MessageToast, Token, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend(
@@ -18,8 +24,32 @@ sap.ui.define(
           MessageToast.show(sMsg);
         },
 
-        onSearch: function () {
+        onFilter: function (oEvent) {
           //TODO: funktionalität des Filters einfügen
+          var sQuery = oEvent.getParameter("query"); // Eingabewert aus Suchfeld
+          var oTable = this.getView().byId("cleaningTable");
+          var oBinding = oTable.getBinding("items");
+
+          if (sQuery) {
+            var aFilters = [
+              new Filter("name", FilterOperator.Contains, sQuery),
+              new Filter("task", FilterOperator.Contains, sQuery),
+              new Filter("date", FilterOperator.Contains, sQuery),
+            ];
+            oBinding.filter(new Filter(aFilters, false)); // OR-Suche
+          } else {
+            oBinding.filter([]); // Filter zurücksetzen
+          }
+          //sap.m.MessageToast.show("Search icon clicked!");
+        },
+
+        onDeleteSelected: function () {
+          //TODO: funktionalität des Buttons löschen einfügen
+          sap.m.MessageToast.show("Delete button clicked!");
+        },
+
+        onSelectItem: function () {
+          //TODO: funktionalität von Checkboxen einfügen
           sap.m.MessageToast.show("Search icon clicked!");
         },
 

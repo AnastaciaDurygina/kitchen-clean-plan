@@ -14,14 +14,11 @@
             <ToolbarSpacer/>
 
             <!-- Eingabefeld -->
-            <Input
-               value="{/recipient/name}"
-               valueLiveUpdate="true"
+            <SearchField
+               id="searchField"
                width="40%"
                placeholder="Filter"
-               showValueHelp="true"
-               valueHelpIconSrc="sap-icon://search"
-               valueHelpRequest=".onSearch"/>
+               search=".onFilter"/>
 
             <!-- Buttons -->
             <Button
@@ -29,18 +26,45 @@
                text="{i18n>newEntryDialogButtonText}"
                type="Emphasized"
                press=".onOpenDialog"
-               class="sapUiSmallMarginEnd sapUiPositive"/> <!-- Hier wird die SAPUI5 Positive Klasse hinzugefügt -->
+               class="sapUiSmallMarginEnd sapUiPositive"/> <!-- Hier wird die SAPUI5 Positive Klasse hinzugefügt - Blaue Button -->
             <Button
                id="deleteButton"
                text="{i18n>deleteButtonText}"
-               press=".onNewEntry"/>
+               press=".onDeleteSelected"/>
          </Toolbar>
       </headerToolbar>
    
       <content>
-         <FormattedText
-            htmlText="{/recipient/name}"
-            class="sapUiSmallMargin sapThemeHighlight-asColor myFilterText"/>
+         <!-- Tabelle mit Checkboxen-->
+         <Table id="cleaningTable"
+            mode="MultiSelect"
+            items="{cleaningModel>/cleaningTasks}"><!-- binding an ein Model TODO -->
+            <columns>
+               <Column width="3rem">
+                  <Text text=""/>
+               </Column>
+               <Column>
+                  <Text text="Name"/>
+               </Column>
+               <Column>
+                  <Text text="Tätigkeit"/>
+               </Column>
+               <Column>
+                  <Text text="Datum"/>
+               </Column>
+            </columns>
+            <items>
+               <ColumnListItem> <!-- Datenbindung für jede Zeile TODO -->
+                  <cells>
+                     <!-- Leere Zelle für die Checkbox-Spalte als Platzhalter -->
+                     <Text text=""/>
+                     <Text text="{cleaningModel>name}"/>
+                     <Text text="{cleaningModel>task}"/>
+                     <Text text="{cleaningModel>date}"/>
+                  </cells>
+               </ColumnListItem>
+            </items>
+         </Table>
       </content>
    </Panel>
 </mvc:View>

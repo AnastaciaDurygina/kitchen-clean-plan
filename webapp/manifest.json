@@ -34,6 +34,11 @@
           "supportedLocales": ["", "en"],
           "fallbackLocale": "en"
         }
+      },
+
+      "cleaningModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/cleaningTasks.json"
       }
     },
     "rootView": {
