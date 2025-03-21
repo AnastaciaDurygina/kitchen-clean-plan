@@ -15,7 +15,7 @@
 
             <!-- Eingabefeld -->
             <SearchField
-               id="searchField"
+               id="searchField" 
                width="40%"
                placeholder="Filter"
                search=".onFilter"/>
@@ -38,7 +38,7 @@
          <!-- Tabelle mit Checkboxen-->
          <Table id="cleaningTable"
             mode="MultiSelect"
-            items="{cleaningModel>/cleaningTasks}"><!-- binding an ein Model TODO -->
+            items="{cleaningModel>/cleaningTasks}">
             <columns>
                <Column width="3rem">
                   <Text text=""/>
@@ -58,7 +58,7 @@
                   <cells>
                      <!-- Leere Zelle für die Checkbox-Spalte als Platzhalter -->
                      <Text text=""/>
-                     <Text text="{cleaningModel>name}"/>
+                     <ObjectIdentifier title="{cleaningModel>name}"/><!-- speziell für Namen und wird standardmäßig fett  -->
                      <Text text="{cleaningModel>task}"/>
                      <Text text="{cleaningModel>date}"/>
                   </cells>

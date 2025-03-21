@@ -54,7 +54,7 @@
          <Button
             text="{i18n>dialogCreateButtonText}"
             type="Emphasized"
-            press=".onCreateDialog"/>
+            press=".onCreateEntry"/>
       </beginButton>
 
       <endButton>
