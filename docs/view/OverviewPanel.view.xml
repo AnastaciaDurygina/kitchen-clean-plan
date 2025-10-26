@@ -1,0 +1,70 @@
+<mvc:View
+   controllerName="ui5.kitchen-clean-plan.controller.OverviewPanel"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+
+   <Panel class="sapUiResponsiveMargin" width="auto">
+      <!-- Toolbar für Panel-Header (Titel + Eingabefeld + Buttons) -->
+      <headerToolbar>
+         <Toolbar>
+            <!-- Panel-Titel (links) -->
+            <Title text="{i18n>overviewPanelTitle}" level="H2"/>
+
+            <!-- Leerer FlexBox für Abstand -->
+            <ToolbarSpacer/>
+
+            <!-- Eingabefeld -->
+            <SearchField
+               id="searchField" 
+               width="40%"
+               placeholder="Filter"
+               search=".onFilter"/>
+
+            <!-- Buttons -->
+            <Button
+               id="newEntryButton"
+               text="{i18n>newEntryDialogButtonText}"
+               type="Emphasized"
+               press=".onOpenDialog"
+               class="sapUiSmallMarginEnd sapUiPositive"/> <!-- Hier wird die SAPUI5 Positive Klasse hinzugefügt - Blaue Button -->
+            <Button
+               id="deleteButton"
+               text="{i18n>deleteButtonText}"
+               press=".onDeleteSelected"/>
+         </Toolbar>
+      </headerToolbar>
+   
+      <content>
+         <!-- Tabelle mit Checkboxen-->
+         <Table id="cleaningTable"
+            mode="MultiSelect"
+            items="{cleaningModel>/cleaningTasks}">
+            <columns>
+               <Column width="3rem">
+                  <Text text=""/>
+               </Column>
+               <Column>
+                  <Text text="Name"/>
+               </Column>
+               <Column>
+                  <Text text="Tätigkeit"/>
+               </Column>
+               <Column>
+                  <Text text="Datum"/>
+               </Column>
+            </columns>
+            <items>
+               <ColumnListItem> <!-- Datenbindung für jede Zeile TODO -->
+                  <cells>
+                     <!-- Leere Zelle für die Checkbox-Spalte als Platzhalter -->
+                     <Text text=""/>
+                     <ObjectIdentifier title="{cleaningModel>name}"/><!-- speziell für Namen und wird standardmäßig fett  -->
+                     <Text text="{cleaningModel>task}"/>
+                     <Text text="{cleaningModel>date}"/>
+                  </cells>
+               </ColumnListItem>
+            </items>
+         </Table>
+      </content>
+   </Panel>
+</mvc:View>
