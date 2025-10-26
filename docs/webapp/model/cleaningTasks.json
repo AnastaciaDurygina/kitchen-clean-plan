@@ -1,0 +1,19 @@
+{
+  "cleaningTasks": [
+    {
+      "name": "Sabine",
+      "task": "Spülmaschine, Kaffeemaschine putzen",
+      "date": "17.01.2025"
+    },
+    {
+      "name": "Anastasiia",
+      "task": "Kaffee kaufen",
+      "date": "05.02.2025"
+    },
+    {
+      "name": "Nikolaj",
+      "task": "Geschirr waschen",
+      "date": "06.02.2025"
+    }
+  ]
+}

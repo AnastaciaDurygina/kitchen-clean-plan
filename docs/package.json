@@ -1,0 +1,9 @@
+{
+  "name": "ui5.kitchen-clean-plan",
+  "version": "1.0.0",
+  "description": "The UI5 Kitchen-clean-plan application",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  },
+  "author": "Durygina, Anastasiia"
+}
